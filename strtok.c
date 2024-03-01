@@ -9,7 +9,7 @@
 
 char *my_strtok(char *str, const char *delim)
 {
-	static char *internal_str = NULL;
+	static char *internal_str;
 	char *end;
 
 	if (!str && !internal_str)
@@ -22,7 +22,7 @@ char *my_strtok(char *str, const char *delim)
 		str++;
 	if (!*str)
 	{
-		internal_str = NULL; 
+		internal_str = NULL;
 		return (NULL);
 	}
 	end = str;
@@ -66,6 +66,7 @@ size_t my_strcspn(const char *str, const char *reject)
 	while (*str)
 	{
 		int found = 0;
+
 		j = reject;
 		while (*j)
 		{
