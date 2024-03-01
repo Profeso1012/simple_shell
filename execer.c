@@ -19,23 +19,23 @@ int path_finder(char **ptr)
 	ppath = getenv("PATH");
 	if (ppath == NULL)
 		return (0);
-	strcpy(path_str, ppath);
-	_token = strtok(path_str, ":");
+	_strcpy(path_str, ppath);
+	_token = my_strtok(path_str, ":");
 	while (_token != NULL)
 	{
-		store = malloc(strlen(_token) + strlen("/") + strlen(*ptr) + 1);
+		store = malloc(_strlen(_token) + _strlen("/") + _strlen(*ptr) + 1);
 		if (store == NULL)
 		{
 			perror(*ptr);
 			free(store);
 			return (0);
 		}
-		strcpy(store, _token);
-		strcat(store, "/");
-		strcat(store, *ptr);
+		_strcpy(store, _token);
+		_strcat(store, "/");
+		_strcat(store, *ptr);
 		if (access(store, X_OK) == 0)
 		{
-			while (i < strlen(store))
+			while (i < _strlen(store))
 			{
 				array[i] = store[i];
 				i++;
@@ -46,7 +46,7 @@ int path_finder(char **ptr)
 			return (1);
 		}
 		free(store);
-		_token = strtok(NULL, ":");
+		_token = my_strtok(NULL, ":");
 	}
 	perror(*ptr);
 	return (0);

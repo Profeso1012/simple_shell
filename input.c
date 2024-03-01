@@ -17,7 +17,7 @@ char *get_line(void)
 		free_line(array);
 		return (NULL);
 	}
-	array[strcspn(array, "\n")] = '\0';
+	array[my_strcspn(array, "\n")] = '\0';
 	return (array);
 }
 

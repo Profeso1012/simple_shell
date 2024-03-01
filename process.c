@@ -10,16 +10,16 @@ int process_command(char *line, char **env)
 	char *args[MAX_ARGS];
 	int i = 0, pid;
 
-	args[i] = strtok(line, " ");
+	args[i] = my_strtok(line, " ");
 	while (args[i] != NULL && i + 1 < MAX_ARGS)
 	{
 		i++;
-		args[i] = strtok(NULL, " ");
+		args[i] = my_strtok(NULL, " ");
 	}
 	args[i] = NULL;
-	if (strcmp(args[0], "exit") == 0)
+	if (_strcmp(args[0], "exit") == 0)
 		exit(0);
-	else if (strcmp(args[0], "env") == 0)
+	else if (_strcmp(args[0], "env") == 0)
 	{
 		disp_env(env);
 		return (0);
